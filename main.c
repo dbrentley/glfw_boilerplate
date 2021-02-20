@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define DEFAULT_WIDTH 1920
+#define DEFAULT_HEIGHT 1080
 
 GameState *game_state;
 
@@ -43,7 +45,8 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     // glfwWindowHint(GLFW_SAMPLES, 4); // anti-alias
 
-    window = glfwCreateWindow(1920, 1080, "TradesKill", NULL, NULL);
+    window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "TradesKill", NULL,
+                              NULL);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -67,8 +70,8 @@ int main() {
 
     //game_state->cursor = custom_cursor(window);
     game_state->should_close = 0;
-    game_state->window_state->width = 1920;
-    game_state->window_state->height = 1080;
+    game_state->window_state->width = DEFAULT_WIDTH;
+    game_state->window_state->height = DEFAULT_HEIGHT;
 
     glfwSetErrorCallback(error_callback);
     glfwSetKeyCallback(window, key_callback);
